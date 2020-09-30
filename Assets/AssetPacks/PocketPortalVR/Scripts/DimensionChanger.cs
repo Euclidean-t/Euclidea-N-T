@@ -27,7 +27,9 @@ public static class DimensionChanger {
 		CameraExtensions.LayerCullingHide (camera, fromDimensionLayer);
 		if (dimensionSkybox) {
 			if (camera.GetComponent<Skybox> ()) {
-				camera.GetComponent<Skybox> ().material = dimensionSkybox;	
+				camera.GetComponent<Skybox> ().material = dimensionSkybox;
+				RenderSettings.skybox = dimensionSkybox;
+				DynamicGI.UpdateEnvironment();
 			}
 		}
 	}

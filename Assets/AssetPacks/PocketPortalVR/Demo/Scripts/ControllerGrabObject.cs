@@ -3,6 +3,7 @@
  */
 
 using UnityEngine;
+using Valve.VR;
 
 public class ControllerGrabObject : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class ControllerGrabObject : MonoBehaviour
 	private GameObject objectInHand;
 
 	#if USES_STEAM_VR
+	/*//
 	private SteamVR_Controller.Device Controller
 	{
 	get { return SteamVR_Controller.Input((int)trackedObj.index); }
 	}
+	//*/
 	#endif
 
 	#if USES_STEAM_VR
@@ -59,6 +62,7 @@ public class ControllerGrabObject : MonoBehaviour
 
 	void Update() {
 		#if USES_STEAM_VR
+		/*//
 		if (Controller.GetHairTriggerDown())
 		{
 		if (collidingObject)
@@ -74,6 +78,7 @@ public class ControllerGrabObject : MonoBehaviour
 		ReleaseObject();
 		}
 		}
+		//*/
 		#endif
 	}
 
@@ -96,6 +101,7 @@ public class ControllerGrabObject : MonoBehaviour
 	private void ReleaseObject()
 	{
 		#if USES_STEAM_VR
+		/*//
 		if (GetComponent<FixedJoint>())
 		{
 		GetComponent<FixedJoint>().connectedBody = null;
@@ -106,6 +112,7 @@ public class ControllerGrabObject : MonoBehaviour
 
 		}
 		objectInHand = null;
+		//*/
 		#endif
 	}
 }

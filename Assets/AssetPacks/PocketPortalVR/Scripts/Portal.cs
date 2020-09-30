@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VR;
 using UnityEngine.Assertions;
+using Valve.VR;
 
 #if USES_AR_KIT
 using UnityEngine.XR.iOS;

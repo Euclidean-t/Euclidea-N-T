@@ -99,6 +99,7 @@ public class Dimension : MonoBehaviour {
 	// You have just entered this dimension. All portals now point away from it.
 	public void SwitchConnectingPortals() {
 		foreach (Portal portal in connectedPortals) {
+			if (portal == null) continue;
 			if (portal.ToDimension () == this) {
 				portal.SwitchPortalDimensions ();
 			}
