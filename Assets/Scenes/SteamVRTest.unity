@@ -6010,7 +6010,7 @@ GameObject:
   - component: {fileID: 1593909660}
   m_Layer: 0
   m_Name: VRCamera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6301,6 +6301,7 @@ GameObject:
   - component: {fileID: 1594950870}
   - component: {fileID: 114000013258099092}
   - component: {fileID: 114000009255013532}
+  - component: {fileID: 1606320341}
   m_Layer: 26
   m_Name: RightHand
   m_TagString: Untagged
@@ -6308,6 +6309,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1606320341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606320340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4432163429ec1d4ca08323dfc728ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerZDirection: 0
 --- !u!1 &1606336742
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,6 +6334,7 @@ GameObject:
   - component: {fileID: 1595032648}
   - component: {fileID: 114000012876583958}
   - component: {fileID: 114000012415876282}
+  - component: {fileID: 1606336743}
   m_Layer: 26
   m_Name: LeftHand
   m_TagString: Untagged
@@ -6327,6 +6342,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1606336743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606336742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4432163429ec1d4ca08323dfc728ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerZDirection: 0
 --- !u!1 &1606345446
 GameObject:
   m_ObjectHideFlags: 0
