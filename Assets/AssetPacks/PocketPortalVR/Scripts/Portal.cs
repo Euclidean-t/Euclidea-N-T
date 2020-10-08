@@ -513,7 +513,7 @@ public class Portal : MonoBehaviour
             }
             transitionObject.triggerZDirection = !transitionObject.triggerZDirection;
         }
-
+		/*//
         if (!isDeforming) { // Only deform if the main camera isn't deforming.
             Vector3 transformPosition = transitionObject.transform.position;
             if (Mathf.Abs(convertedPoint.z) < maximumDeformRange) {
@@ -522,6 +522,7 @@ public class Portal : MonoBehaviour
             }
             meshDeformer.AddDeformingForce(transformPosition, deformPower);
         }
+		//*/
     }
 
 	/* Convenience */

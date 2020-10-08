@@ -17,7 +17,7 @@ public class DefineManager : EditorWindow
 	// http://forum.unity3d.com/threads/93901-global-define/page2
 	// Do not modify these paths
 	//const string CSHARP_PATH 		= "Assets/smcs.rsp";
-	const string CSHARP_PATH 		= "Assets/mcs.rsp";
+	const string CSHARP_PATH 		= "Assets/ccs.rsp";
 	List<string> csDefines = new List<string>(); 
 
 	private int selection = 0;
