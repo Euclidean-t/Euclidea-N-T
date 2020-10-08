@@ -254,13 +254,12 @@ public class Portal : MonoBehaviour
 			Vector3 deltaTransform = transform.position - camera.transform.position;
 			renderCam.nearClipPlane = Mathf.Max (deltaTransform.magnitude - meshRenderer.bounds.size.magnitude, 0.01f);
 		}
-			
+			this.RenderSteamVR (camera);
 #if USES_STEAM_VR || USES_OPEN_VR
 		if (camera.stereoEnabled) {  // IE: If we're in VR
-
-/* Open VR Special */
+            /* Open VR Special */
 #if USES_STEAM_VR
-			this.RenderSteamVR (camera);
+            this.RenderSteamVR (camera);
 #endif
 
 /* Gear VR Special */
@@ -270,6 +269,7 @@ public class Portal : MonoBehaviour
         }
         else {  // We're rendering in mono regardless
 			this.RenderMono (camera);
+            Debug.Log("using rendermono");
 		}
 #else
 	this.RenderMono (camera);   // We force mono in things like ARKit & Hololens

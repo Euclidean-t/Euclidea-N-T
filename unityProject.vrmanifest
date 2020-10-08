@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.euclideant.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\inger\\OneDrive\\Documents\\HKU\\Y2\\New Technologies\\Euclidean't\\Euclidea-N-T\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Euclidean't [Testing]"
+        }
+      }
+    }
+  ]
+}
