@@ -58,5 +58,4 @@ public class GameController : MonoBehaviour
             return CurrentPortal.FromDimension();
         }
     }
-
 }

@@ -117,6 +117,7 @@ public class PolePortalManager : MonoBehaviour
                 Level++;
             else
                 initialized = true;
+
             Log("Passed! Enabling portal" + Level);
             CurrentPortal.gameObject.SetActive(true);
         }

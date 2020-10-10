@@ -20,12 +20,12 @@ public class PolePortalTrigger : MonoBehaviour
         
     }
 
-    void Log(string msg)
+    protected void Log(string msg)
     {
         if (debug) Debug.Log(msg);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         Log(this.name + ": OnTriggerEnter(" + other.gameObject.name + ")");
         if (other.gameObject == Camera.main.gameObject)
