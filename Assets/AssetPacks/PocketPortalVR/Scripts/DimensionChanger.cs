@@ -7,11 +7,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class DimensionChanger {
-	public static void SwitchDimensions(GameObject obj, Dimension fromDimension, Dimension toDimension) {
+	public static void SwitchDimensions(GameObject obj, Dimension fromDimension, Dimension toDimension)
+	{
 		obj.layer = toDimension.layer;
-
-        // Move over all visible children as well
-        foreach(MeshRenderer childRenderer in obj.GetComponentsInChildren<MeshRenderer>()) {
+		ControllerRenderer controller = obj.GetComponent<ControllerRenderer>();
+		if (controller != null)
+        {
+			controller.SwitchDimensions(toDimension);
+			return;
+        }
+		// Move over all visible children as well
+		foreach (MeshRenderer childRenderer in obj.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.gameObject.layer = toDimension.layer;
         }
 

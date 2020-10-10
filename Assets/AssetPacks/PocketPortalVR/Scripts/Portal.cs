@@ -340,7 +340,7 @@ public class Portal : MonoBehaviour
         bool isForward = transform.InverseTransformPoint (portalCamera.transform.position).z < 0;
 		Vector4 clipPlane = CameraSpacePlane( portalCamera, pos, normal, isForward ? 1.0f : -1.0f );
 		Matrix4x4 projection = camProjectionMatrix;
-		if (this.enableObliqueProjection) {
+		if (this.enableObliqueProjection && !isDeforming) {
 			CalculateObliqueMatrix (ref projection, clipPlane);
 		}
 		portalCamera.projectionMatrix = projection;
@@ -384,7 +384,7 @@ public class Portal : MonoBehaviour
 
 	// Given position/normal of the plane, calculates plane in camera space.
 	private Vector4 CameraSpacePlane (Camera cam, Vector3 pos, Vector3 normal, float sideSign) {
-        Vector3 offsetPos = pos + normal * portalSwitchDistance * (triggerZDirection ? -1 : 1);
+        Vector3 offsetPos = pos + normal * portalSwitchDistance * (triggerZDirection ? -1 : 1) * 0f;
 		Matrix4x4 m = cam.worldToCameraMatrix;
 		Vector3 cpos = m.MultiplyPoint( offsetPos );
 		Vector3 cnormal = m.MultiplyVector( normal ).normalized * sideSign;
