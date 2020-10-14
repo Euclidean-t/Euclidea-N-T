@@ -24,8 +24,9 @@ public class ControllerRenderer : MonoBehaviour
         if (dimension == GameController._instance.CurrentDimension)
         {
             ray = new Ray(transform.position, Camera.main.transform.position - transform.position);
-            Collider portalCollider = GameController._instance.CurrentPortal.gameObject.GetComponent<Collider>();
-            if (portalCollider.Raycast(ray, out hit, (Camera.main.transform.position - transform.position).magnitude))
+            int mask = 511;
+            bool cast = Physics.Raycast(transform.position, Camera.main.transform.position - transform.position, out hit, (Camera.main.transform.position - transform.position).magnitude, ~mask);
+            if (cast && hit.collider.gameObject.GetComponent<Portal>() != null)
             {
                 if (rendering)
                 {
@@ -45,22 +46,20 @@ public class ControllerRenderer : MonoBehaviour
         else
         {
             ray = new Ray(transform.position, Camera.main.transform.position - transform.position);
-            Collider portalCollider = GameController._instance.CurrentPortal.gameObject.GetComponent<Collider>();
-            if (portalCollider.Raycast(ray, out hit, (Camera.main.transform.position - transform.position).magnitude))
+            int mask = 511;
+            bool cast = Physics.Raycast(transform.position, Camera.main.transform.position - transform.position, out hit, (Camera.main.transform.position - transform.position).magnitude, ~mask);
+            if (cast && hit.collider.gameObject.GetComponent<Portal>() != null)
             {
-                Debug.Log("Hit " + hit.collider.gameObject.name);
                 if (!rendering)
                 {
-                    Debug.Log("Enabling rendering!");
                     SteamVRRenderer.SetMeshRendererState(true);
                     rendering = true;
                 }
-            } 
+            }
             else
             {
                 if (rendering)
                 {
-                    Debug.Log("Disabling rendering!");
                     SteamVRRenderer.SetMeshRendererState(false);
                     rendering = false;
                 }

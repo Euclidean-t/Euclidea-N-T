@@ -67,6 +67,8 @@ public class PolePortalManager : MonoBehaviour
             if (trigger.index > lastTrigger.index)
             {
                 ProgressPortal();
+                trigger.enabled = false;
+                lastTrigger.enabled = false;
             }
 
             lastTrigger = trigger;
@@ -114,7 +116,10 @@ public class PolePortalManager : MonoBehaviour
             Log("Passed! Disabling portal" + Level);
             CurrentPortal.gameObject.SetActive(false);
             if (initialized)
-                Level++;
+                if (GameController._instance.CurrentButtons > 0)
+                    GameController._instance.CurrentButtons--;
+                else
+                    Level++;
             else
                 initialized = true;
 
