@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     }
 
     public List<Portal> portals;
-    public List<int> buttons;
+    public List<int> triggers;
     private int level = 0;
 
     public int Level
@@ -41,16 +41,16 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public List<int> Buttons
+    public List<int> Triggers
     {
         get
         {
-            return buttons;
+            return triggers;
         }
 
         set
         {
-            buttons = value;
+            triggers = value;
         }
     }
 
@@ -64,19 +64,20 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public int CurrentButtons
+    public int CurrentTriggers
     {
         get
         {
-            if (level >= 0 && level < buttons.Count)
-                return buttons[level];
+            if (level >= 0 && level < triggers.Count)
+                return triggers[level];
             return -1;
         }
         set
         {
-            if (level >= 0 && level < buttons.Count)
-                buttons[level] = value;
-            buttons[level] = -1;
+            if (level >= 0 && level < triggers.Count)
+                triggers[level] = value;
+            else
+                triggers[level] = -1;
         }
     }
 

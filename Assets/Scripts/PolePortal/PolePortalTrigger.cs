@@ -5,7 +5,6 @@ using UnityEngine;
 public class PolePortalTrigger : MonoBehaviour
 {
     public PolePortalManager manager;
-    public int index;
     public bool debug = true;
 
     // Start is called before the first frame update

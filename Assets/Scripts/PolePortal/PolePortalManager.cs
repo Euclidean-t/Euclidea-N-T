@@ -57,21 +57,24 @@ public class PolePortalManager : MonoBehaviour
 
     public void SetTrigger(PolePortalTrigger trigger)
     {
+        Log("Trigger: " + trigger + ", lastTrigger: " + lastTrigger);
         if (lastTrigger == null)
         {
             lastTrigger = trigger;
         }
+        Log("Trigger: " + trigger.gameObject.layer + ", lastTrigger: " + lastTrigger.gameObject.layer);
         if (trigger != lastTrigger)
         {
-            Log("Trigger not equal! Checking if " + trigger.index + ">" + lastTrigger.index);
-            if (trigger.index > lastTrigger.index)
+            Log("Checking elegibility!");
+            if (CheckEligibilty())
             {
+                trigger.gameObject.SetActive(false);
+                lastTrigger.gameObject.SetActive(false);
                 ProgressPortal();
-                trigger.enabled = false;
-                lastTrigger.enabled = false;
             }
 
-            lastTrigger = trigger;
+            if (lastTrigger != null)
+                lastTrigger = trigger;
         }
     }
 
@@ -100,7 +103,7 @@ public class PolePortalManager : MonoBehaviour
     public bool CheckEligibilty()
     {
         Log("Current level is " + Level);
-        if (Level <= 0)
+        if (!initialized)
             return true;
         if (Level >= PortalAmount)
             return false;
@@ -110,21 +113,31 @@ public class PolePortalManager : MonoBehaviour
 
     public void ProgressPortal()
     {
-        Log("Checking elegibility!");
-        if (CheckEligibilty())
+        Log("Passed! Disabling portal" + Level);
+        CurrentPortal.gameObject.SetActive(false);
+        if (initialized)
         {
-            Log("Passed! Disabling portal" + Level);
-            CurrentPortal.gameObject.SetActive(false);
-            if (initialized)
-                if (GameController._instance.CurrentButtons > 0)
-                    GameController._instance.CurrentButtons--;
-                else
-                    Level++;
-            else
-                initialized = true;
-
+            Log("Current triggers: " + GameController._instance.CurrentTriggers);
+            if (GameController._instance.CurrentTriggers > 0)
+                GameController._instance.CurrentTriggers--;
+            Log("Current triggers: " + GameController._instance.CurrentTriggers);
+        }
+        else
+        {
             Log("Passed! Enabling portal" + Level);
             CurrentPortal.gameObject.SetActive(true);
+            initialized = true;
+            lastTrigger = null;
+            return;
+        }
+
+        Log("Current triggers: " + GameController._instance.CurrentTriggers);
+        if (GameController._instance.CurrentTriggers <= 0)
+        {
+            Level++;
+            Log("Passed! Enabling portal" + Level);
+            CurrentPortal.gameObject.SetActive(true);
+            lastTrigger = null;
         }
     }
 }
