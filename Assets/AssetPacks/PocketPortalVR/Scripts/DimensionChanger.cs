@@ -19,6 +19,12 @@ public static class DimensionChanger {
 			return;
         }
 
+		HandCollider handCollider = obj.GetComponentInChildren<HandCollider>();
+		if (handCollider != null)
+        {
+			handCollider.collisionMask = toDimension.layer;
+        }
+
 		// Move over all visible children as well
 		foreach (MeshRenderer childRenderer in obj.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.gameObject.layer = toDimension.layer;
