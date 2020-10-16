@@ -157,6 +157,26 @@ public class Portal : MonoBehaviour
 #endif
 	}
 
+    private void OnDisable()
+    {
+		if (renderCam != null)
+		{
+			Destroy(renderCam.gameObject);
+			renderCam = null;
+		}
+
+		if (leftTexture != null)
+		{
+			Destroy(leftTexture);
+		}
+#if USES_STEAM_VR || USES_OPEN_VR
+		if (rightTexture != null)
+		{
+			Destroy(rightTexture);
+		}
+#endif
+	}
+
 	/// <summary>
 	///  Call this method to instantly switch between dimensions. This will switch the Main Character (IE: the main camera) as well.
 	/// </summary>
@@ -191,6 +211,7 @@ public class Portal : MonoBehaviour
 
 			renderCam.name = gameObject.name + " render camera";
 			renderCam.tag = "Untagged";
+			//renderCam.GetComponent<Camera>().stereoTargetEye = StereoTargetEyeMask.None;
 
 			if (renderCam.GetComponent<Skybox> ()) {
 				camSkybox = renderCam.GetComponent<Skybox> ();	
@@ -269,7 +290,7 @@ public class Portal : MonoBehaviour
         }
         else {  // We're rendering in mono regardless
 			this.RenderMono (camera);
-            Debug.Log("using rendermono");
+            //Debug.Log("using rendermono");
 		}
 #else
 	this.RenderMono (camera);   // We force mono in things like ARKit & Hololens
