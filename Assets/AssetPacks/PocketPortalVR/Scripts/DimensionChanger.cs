@@ -4,14 +4,29 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public static class DimensionChanger {
-	public static void SwitchDimensions(GameObject obj, Dimension fromDimension, Dimension toDimension) {
+	public static void SwitchDimensions(GameObject obj, Dimension fromDimension, Dimension toDimension)
+	{
 		obj.layer = toDimension.layer;
+		ControllerRenderer controller = obj.GetComponent<ControllerRenderer>();
+		if (controller != null)
+        {
+			controller.SwitchDimensions(toDimension);
+			return;
+        }
 
-        // Move over all visible children as well
-        foreach(MeshRenderer childRenderer in obj.GetComponentsInChildren<MeshRenderer>()) {
+		HandCollider handCollider = obj.GetComponentInChildren<HandCollider>();
+		if (handCollider != null)
+        {
+			handCollider.collisionMask = toDimension.layer;
+        }
+
+		// Move over all visible children as well
+		foreach (MeshRenderer childRenderer in obj.GetComponentsInChildren<MeshRenderer>()) {
             childRenderer.gameObject.layer = toDimension.layer;
         }
 

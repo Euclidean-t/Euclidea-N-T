@@ -657,7 +657,7 @@ namespace Valve.VR
             handle = newHandle;
 
             if (err != EVRInputError.None)
-                Debug.LogError("<b>[SteamVR]</b> GetActionHandle (" + fullPath.ToLowerInvariant() + ") error: " + err.ToString());
+                Debug.LogWarning("<b>[SteamVR]</b> GetActionHandle (" + fullPath.ToLowerInvariant() + ") error: " + err.ToString());
         }
 
         private string GetActionSetPath()

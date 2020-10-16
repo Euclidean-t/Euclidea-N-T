@@ -576,7 +576,7 @@ namespace Valve.VR
 
             if (err != EVRInputError.None)
             {
-                Debug.LogError("<b>[SteamVR]</b> GetPoseActionData error (" + fullPath + "): " + err.ToString() + " Handle: " + handle.ToString() + ". Input source: " + inputSource.ToString());
+                Debug.LogWarning("<b>[SteamVR]</b> GetPoseActionData error (" + fullPath + "): " + err.ToString() + " Handle: " + handle.ToString() + ". Input source: " + inputSource.ToString());
             }
 
             if (active)
